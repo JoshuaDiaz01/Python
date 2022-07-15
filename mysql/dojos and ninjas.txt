@@ -1,0 +1,32 @@
+select * from dojos;
+insert into dojos (name)
+values ("hello_dojo"), ("foding dojo"), ("my dojo");
+
+DELETE from dojos
+where id>0;
+
+insert into dojos (name)
+values ("hojo"), ("mojo"), ("rojo");
+
+select * from ninjas;
+insert into ninjas (first_name, last_name, age, dojo_id)
+values ("n1", "n2", 4, 34), ("n3","n4", 6, 34), ('n5', "n6", 20, 34);
+
+insert into ninjas (first_name, last_name, age, dojo_id)
+values ("n1", "n2", 4, 35), ("n3","n4", 6, 35), ('n5', "n6", 20, 35);
+
+insert into ninjas (first_name, last_name, age, dojo_id)
+values ("n1", "n2", 4, 36), ("n3","n4", 6, 36), ('n5', "n6", 20, 36);
+
+select * from dojos
+left join ninjas on dojos.id = ninjas.dojo_id where dojos.id = 34;
+
+select * from dojos
+left join ninjas on dojos.id = ninjas.dojo_id where dojos.id = 35;
+
+select * from dojos
+left join ninjas on dojos.id = ninjas.dojo_id where dojos.id =36;
+
+
+
+
