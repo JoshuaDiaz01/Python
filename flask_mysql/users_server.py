@@ -1,4 +1,3 @@
-from ast import Return
 from flask import Flask, render_template, request, redirect
 
 from users import User
@@ -35,9 +34,11 @@ def edit(id):
     }
     return render_template("users_three.html", user = User.get_one(data))
 
+
 #will execute the update and redirect
 @app.route('/user/update', methods=['POST'])
 def update():
+
     User.update(request.form)
     return redirect('/users')
 

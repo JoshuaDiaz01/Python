@@ -1,4 +1,5 @@
 from mysqlconnection import connectToMySQL
+from flask import flash
 
 class User:
     def __init__(self, data):
@@ -50,3 +51,7 @@ class User:
     def destroy(cls,data):
         query = "DELETE FROM users WHERE id= %(id)s;"
         return connectToMySQL('users2').query_db(query,data)
+
+
+
+
