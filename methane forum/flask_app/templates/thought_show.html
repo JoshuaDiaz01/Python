@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome {{user.first_name}}</h1>
+    <a href="/dashboard">Back to HomePage</a>
+    <a href="/user/logout">Logout</a>
+    <img src="{{ url_for('static', filename = 'image/ch4_trend_all_gl.png' )}}" class="img-fluid"id="methane_chart">
+    <div>
+        <!-- player is defined in model_thought get one -->
+        <h3>Posted by: {{thought.player.first_name}} - {{thought.credential}}</h3>
+        <div>
+            <label for="comment">Year(s) Analyzed:</label>
+            <p>{{ thought.comment}}</p>
+        </div>
+        <div>
+            <label for="related_article">Related Articles:</label>
+            <p>{{thought.related_article}}</p>
+        </div>
+        <div>
+            <label for="hypothesis">Hypothesis:</label>
+            <p>{{thought.hypothesis}}</p>
+        </div>
+        <div>
+            <label for="date">Date Posted:</label>
+            <p>{{thought.date}}</p>
+        </div>
+    </div>
+    <table>
+        <tr>
+            <th>Year</th>
+            <th>AVG Methane(ppm)</th>
+        </tr>
+        {% for dict in data['methane'] %}
+        {% if dict['date'][5] == "1" and dict['date'][6] == undefined %} 
+
+        <tr> 
+            <td>{{ dict['date']}}</td>
+            <td>{{ dict['average']}}</td>
+        </tr>
+        {%endif%}
+        {%endfor%}
+    </table>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+<!-- my js -->
+<script src="{{ url_for('static', filename = 'js/script.js') }}"></script>
+</html>

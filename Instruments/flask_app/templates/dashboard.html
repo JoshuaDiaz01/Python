@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div>
+        <h1>Dashboard</h1>
+
+        <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Instrument Name</th>
+                    <th>Instrument Player</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for instrument in all_instruments %}
+                <tr>
+                    <td> {{instrument.name}} </td>
+                    <td>{{instrument.player.full_name}}</td>
+                    <td>
+                        <!-- not able to edit if user not in sesion -->
+                        {% if instrument.player.id == session['uuid'] %}
+                        <a href = "/instrument/{{instrument.id}}/edit">Edit</a>
+                        <a href = "/instrument/{{instrument.id}}/delete">Delete</a>
+                        {% else %}
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+                
+            </tbody>
+
+        </table>
+        </div>
+        <a href="/instrument/new">+ Add New Instrument</a>
+        <a href="/user/logout">Logout</a>
+    </div>
+</body>
+</html>

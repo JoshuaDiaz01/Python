@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>
+            Add new pet
+        </h1>
+        <div>
+            <a href="/">Dashboard</a>
+            <a href="/user/logout">Logout</a>
+            <div>
+        <div>
+            
+            <form action = "/pet/create" method = "post">
+                <!-- allow to show user in session on login -->
+                <input type="hidden" name="user_id" value ="{{ session.uuid }}">
+                <div>
+                    <label for = "name">Name</label>
+                    <input type="text" name = "name" id = "name">
+                    {% for message in get_flashed_messages(category_filter=["err_pets_name"]) %}
+                    <p class="alert">{{ message }}</p>
+            {% endfor %}
+                </div>
+                <div>
+                    <label for = "height">Height</label>
+                    <input type="text" name = "height" id = "height">
+                    {% for message in get_flashed_messages(category_filter=["err_pets_height"]) %}
+                    <p class="alert">{{ message }}</p>
+            {% endfor %}
+                </div>
+                <div>
+                        <label for = "age">Age</label>
+                        <input type="number" name = "age" id = "age">
+                        {% for message in get_flashed_messages(category_filter=["err_pets_age"]) %}
+                        <p class="alert">{{ message }}</p>
+            {% endfor %}
+                </div>
+                <button>Add pet</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

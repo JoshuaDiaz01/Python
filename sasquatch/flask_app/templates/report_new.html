@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>
+            Sasquatch websighting 
+        </h1>
+        <h1>{{user.full_name}}</h1>
+        <div>
+            <a href="/">Dashboard</a>
+            <a href="/user/logout">Logout</a>
+            <div>
+        <div>
+            <form action = "/report/create" method = "post">
+                <input type="hidden" name="user_id" value ="{{ session.uuid }}">
+                <div>
+                    <label for = "location">Location</label>
+                    <input type="text" name = "location" id = "location">
+                    {% for message in get_flashed_messages(category_filter=["err_reports_location"]) %}
+                    <p class="alert">{{ message }}</p>
+            {% endfor %}
+                </div>
+                <div>
+                    <label for = "description">What Happened?</label>
+                    <textarea name = "description" id = "description"></textarea>
+                    {% for message in get_flashed_messages(category_filter=["err_reports_description"]) %}
+                    <p class="alert">{{ message }}</p>
+            {% endfor %}
+                </div>
+                <div>
+                        <label for="num_of"># Of Saquatches</label>
+                        <input type="number" name="num_of">
+
+
+                    {% for message in get_flashed_messages(category_filter=["err_reports_num_of"]) %}
+                    <p class="alert">{{ message }}</p>
+            {% endfor %}
+                </div>
+                <div>
+                    <label for = "date">Date of Sighting</label>
+                    <input type="date" id = "date" name="date">
+                    {% for message in get_flashed_messages(category_filter=["err_reports_date"]) %}
+                    <p class="alert">{{ message }}</p>
+                    {% endfor %}
+                </div>
+                <button>Add Report</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

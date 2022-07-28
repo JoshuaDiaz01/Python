@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div>
+        <!-- allows to see user logged in -->
+        <h1>Welcome {{user.first_name}} To Pets App</h1>
+        <a href="/user/logout">Logout</a>
+        <a href="/pet/new">+ Add New pet</a>
+    </div>
+    <h3>All Pets</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Pets Name</th>
+                <th>Pets Player</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pet in all_pets %}
+            <tr>
+                <td> {{pet.name}} </td>
+                <td>{{pet.player.full_name}}</td>
+                <td>
+                    <!-- not able to edit if user not in sesion -->
+                    {% if pet.player.id == session['uuid'] %}
+                    <a href = "/pet/{{pet.id}}/edit">Edit</a>
+                    <a href = "/pet/{{pet.id}}/delete">Delete</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+
+    </table>
+</body>
+</html>

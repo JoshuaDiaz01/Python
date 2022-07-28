@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- trouble with getting user.first_name fixed by defining user_data in controller routes/ dashboard, and model_recipe.get_all-->
+    <div>
+
+        <h1>{{user.first_name}} welcome to Recipe Share</h1>
+
+        <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Posted By</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for recipe in all_recipes %}
+                <tr>
+                    <td> {{recipe.name}} </td>
+                    <td>{{recipe.player.full_name}}</td>
+                    <td>
+                        <!-- not able to edit if user not in sesion -->
+                        <a href="/recipe/{{recipe.id}}">view recipe</a>
+                        {% if recipe.player.id == session['uuid'] %}
+                        <a href = "/recipe/{{recipe.id}}/edit">Edit</a>
+                        <a href = "/recipe/{{recipe.id}}/delete">Delete</a>
+                        {% else %}
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+                
+            </tbody>
+
+        </table>
+        </div>
+        <a href="/recipe/new">+ Add New Recipe</a>
+        <a href="/user/logout">Logout</a>
+    </div>
+</body>
+</html>

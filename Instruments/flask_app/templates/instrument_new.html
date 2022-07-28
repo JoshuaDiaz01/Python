@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>
+            Add new instrument
+        </h1>
+        <div>
+            <a href="/">Dashboard</a>
+            <a href="/user/logout">Logout</a>
+            <div>
+        <div>
+            <form action = "/instrument/create" method = "post">
+                <div>
+                    <label for = "name">Name</label>
+                    <input type="text" name = "name" id = "name">
+                    {% for message in get_flashed_messages(category_filter=["err_instruments_name"]) %}
+                    <p class="alert">{{ message }}</p>
+            {% endfor %}
+                </div>
+                <div>
+                    <label for = "type">Type</label>
+                    <input type="text" name = "type" id = "type">
+                    {% for message in get_flashed_messages(category_filter=["err_instruments_type"]) %}
+                    <p class="alert">{{ message }}</p>
+            {% endfor %}
+                </div>
+                <div>
+                        <label for = "time_played">Time Played</label>
+                        <input type="number" name = "time_played" id = "time_played">
+                        {% for message in get_flashed_messages(category_filter=["err_instruments_time_played"]) %}
+                        <p class="alert">{{ message }}</p>
+            {% endfor %}
+                </div>
+                <div>
+                    <label for = "avg_price">Average Price</label>
+                    <input type="text" name = "avg_price" id = "avg_price">
+                    {% for message in get_flashed_messages(category_filter=["err_instruments_avg_price"]) %}
+                    <p class="alert">{{ message }}</p>
+            {% endfor %}
+                </div>
+                <div>
+                    <label for = "review">Review</label>
+                    <textarea name= "review" id = "review"></textarea>
+                    {% for message in get_flashed_messages(category_filter=["err_instruments_review"]) %}
+                    <p class="alert">{{ message }}</p>
+                    {% endfor %}
+                </div>
+                <button>Add Instrument</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

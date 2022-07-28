@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Recipe</title>
+</head>
+<body>
+    <div>
+        <h1>Add a New Recipe</h1>
+        <a href="/recipes">back to recipe</a>
+        <a href="/logout"> Logout</a>
+    </div>
+    <div class="container">
+        <form action="/recipes/add/{{session.user_id}}" method= "POST">
+            <div>
+                <label for="name">Name</label>
+                <input type="text" name ="name">
+            </div>
+            <div>
+                <label for="description">Description</label>
+                <textarea name="description" name="description" cols="30" rows="5"></textarea>
+            </div>
+            <div>
+                <label for="intrustions">Instructions</label>
+                <textarea name="instructions" name="instructions" cols="30" rows="5"></textarea>
+            </div>
+            <div>
+                <label for="date_made">Date Cooked / Made</label>
+                <input type='date' name="date_made">
+            </div>
+            <div>
+                <label for="under_30">Under 30 minutes?</label>
+                <input type="radio" value="yes" name="under_30">
+                <label for="under_30">Yes</label>
+                <input type="radio" value="no" name="under_30">
+                <label for="under_30">No</label>
+            </div>
+            <button>Submit</button>
+        </form>
+    </div>
+</body>
+</html>

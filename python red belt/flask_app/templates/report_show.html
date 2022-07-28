@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1></h1>
+    <a href="/dashboard">Back Reports</a>
+    <a href="/user/logout">Logout</a>
+    <div>
+        <h1>Location of sighting:</h1>
+        <h1>{{report.location}}</h1>
+        <!-- player is defined in model_report get one -->
+        <h3>Posted by: {{report.player.first_name}}</h3>
+        <div>
+            <label for="description">Description:</label>
+            <p>{{ report.description}}</p>
+        </div>
+        <div>
+            <label for="date">Dtae of Sighting:</label>
+            <p>{{report.date}}</p>
+        </div>
+        <div>
+            <label for="num_of">Number of Sasquatches seen:</label>
+            <p>{{report.num_of}}</p>
+        </div>
+    </div>
+</body>
+</html>

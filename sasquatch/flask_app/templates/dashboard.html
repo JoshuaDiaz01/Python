@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- trouble with getting user.first_name fixed by defining user_data in controller routes/ dashboard, and model_recipe.get_all-->
+    <div>
+
+        <h1>Sasquatch Websighting</h1>
+        <h1> {{user.full_name}}</h1>
+
+        <div>
+        <table>
+            <thead> Reported Sightings
+                <tr>
+                    <th>location-Date</th>
+                    <th>Reported By</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for report in all_reports %}
+                <tr>
+                    <td> {{report.location}} {{report.date}}</td>
+                    <td>{{report.player.full_name}}</td>
+                    <td>
+                        <!-- not able to edit if user not in sesion -->
+                        <a href="/report/{{report.id}}">view report</a>
+                        {% if report.player.id == session['uuid'] %}
+                        <a href = "/report/{{report.id}}/edit">Edit</a>
+                        <a href = "/report/{{report.id}}/delete">Delete</a>
+                        {% else %}
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+                
+            </tbody>
+
+        </table>
+        </div>
+        <a href="/report/new">+ Add New Report</a>
+        <a href="/user/logout">Logout</a>
+    </div>
+</body>
+</html>
