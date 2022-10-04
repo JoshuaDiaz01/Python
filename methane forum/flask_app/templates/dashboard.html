@@ -53,7 +53,7 @@
         </a>
 
         <!-- Notifications -->
-        <a href="/user/logout"><button type="button" class="btn" style="background-color: #63ADF2;" data-toggle="button"
+        <a href="/user/logout"><button type="button" class="btn" style="background-color: #63ADF2;" id="allbuttons" data-toggle="button"
             aria-pressed="false" autocomplete="off">
             LogOut
           </button></a>
@@ -65,8 +65,7 @@
   <!-- Navbar -->
   <div>
 
-    <h2 style="color: #63ADF2; margin-left: 10px; margin-top: 10px">{{user.first_name}}, Welcome to Analysis of Methane
-      Forum</h2>
+    <h2 style="color: #63ADF2; margin-left: 10px; margin-top: 10px">{{user.first_name}}, Welcome to Methane Forum</h2>
     <h1 class="text-center">All Posted Thoughts</h1>
     <table class="table table-hover my-2">
       <thead>
@@ -87,10 +86,10 @@
           <td>{{thought.comment}}</td>
           <td>
             <!-- not able to edit if user not in sesion -->
-            <a class="btn" style="background-color: #63ADF2;" href="/thought/{{thought.id}}">View Thought</a>
+            <a id="allbuttons" class="btn mx-1" style="background-color: #63ADF2;" href="/thought/{{thought.id}}">View Thought</a>
             {% if thought.player.id == session['uuid'] %}
-            <a class="btn" style="background-color: #63ADF2;" href="/thought/{{thought.id}}/edit">Edit</a>
-            <a class="btn" style="background-color: #DB2955;" href="/thought/{{thought.id}}/delete">Delete</a>
+            <a id="allbuttons" class="btn" style="background-color: #63ADF2;" href="/thought/{{thought.id}}/edit">Edit</a>
+            <a id="allbuttons" class="btn mx-1" style="background-color: #DB2955;" href="/thought/{{thought.id}}/delete">Delete</a>
             {% else %}
             {% endif %}
           </td>
@@ -110,9 +109,8 @@
 
 
     </div>
-    <div>
-      <a href="/thought/new">+ Add New thought</a>
-      <a href="/user/logout">Logout</a>
+    <div class="bottom">
+      <a class="btn" style="background-color: #63ADF2;" href="/thought/new" id="add">+ Add New thought</a>
     </div>
   </div>
 </body>

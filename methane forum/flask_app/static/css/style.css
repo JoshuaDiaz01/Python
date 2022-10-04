@@ -23,3 +23,16 @@
     display: flex;
     justify-content: space-evenly;
 }
+
+.bottom{
+    display: flex;
+    justify-content: center;
+    margin: 25px;
+}
+
+#add{
+    box-shadow: 4px 4px 0px 0px black;
+}
+#allbuttons{
+    box-shadow: 4px 4px 0px 0px black;
+}
