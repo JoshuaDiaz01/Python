@@ -9,7 +9,7 @@ from flask_app.models import model_user
 bcrypt = Bcrypt(app)
 
 #create newsomething
-@app.route('/api/thought/new')
+@app.route('/https://global-warming.org/api/methane-api')
 def api_thought():
     data = {
     "methane": [
