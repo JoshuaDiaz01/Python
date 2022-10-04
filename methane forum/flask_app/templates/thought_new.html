@@ -38,7 +38,7 @@
                         <a class="nav-link" href="/">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/thought/new">Post a Thought</a>
+                        <a class="nav-link" href="/thought/new">Post an Analysis</a>
                     </li>
                 </ul>
                 <!-- Left links -->
@@ -53,7 +53,7 @@
                 </a>
 
                 <!-- Notifications -->
-                <a href="/user/logout"><button type="button" class="btn btn-primary" data-toggle="button"
+                <a href="/user/logout"><button type="button" class="btn" style="background-color: #63ADF2; height:40px; width:100px; box-shadow: 4px 4px 0px 0px black;" data-toggle="button"
                         aria-pressed="false" autocomplete="off">
                         LogOut
                     </button></a>
@@ -63,22 +63,37 @@
         <!-- Container wrapper -->
     </nav>
     <!-- Navbar -->
-    <div>
-        <h1>
-            Add Thought
-        </h1>
-        <img src="{{ url_for('static', filename = 'image/ch4_trend_all_gl.png' )}}" class="img-fluid"
-            id="methane_chart">
+    
+        <h2 style="margin-left: 10px; color: #63ADF2; margin-top:10px;">
+            Add Your Analysis
+        </h2>
+        <div class="data">
+            <img id="monthly_mean" src="{{ url_for('static', filename = 'image/ch4_trend_all_gl.png' )}}" class="img-fluid"
+                id="methane_chart">
+            <table style = "margin-left: 300px; justify-content: end" class="table table-hover">
+                <tr>
+                    <th>Year</th>
+                    <th>AVG Methane(ppm)</th>
+                </tr>
+                {% for dict in data['methane'] %}
+                {% if dict['date'][5] == "1" and dict['date'][6] == undefined %}
+                <tr>
+                    <td>{{ dict['date']}}</td>
+                    <td>{{ dict['average']}}</td>
+                </tr>
+                {%endif%}
+                {%endfor%}
+            </table>
+        </div>
         <div>
-            <a href="/">Dashboard</a>
-            <a href="/user/logout">Logout</a>
+
             <div>
-                <div>
+                <div style = "margin-left:25px;" class="col-4">
                     <form action="/thought/create" method="post">
                         <input type="hidden" name="user_id" value="{{ session.uuid }}">
                         <div>
-                            <label for="credential">Credentials</label>
-                            <select name="credential" id="credential">
+                            <label for="credential">Credentials:</label>
+                            <select class="form-control form-control-sm" name="credential" id="credential">
                                 <option value="none" selected disabled hidden>Select an Option</option>
                                 <option value="PHD-Chemistry">PHD-Chemistry</option>
                                 <option value="PHD-Physics">PHD-Physics</option>
@@ -106,52 +121,39 @@
                             {% endfor %}
                         </div>
                         <div>
-                            <label for="comment">Year(s) Analyzed</label>
-                            <textarea name="comment" id="comment"></textarea>
+                            <label for="comment">Year(s) Analyzed:</label>
+                            <textarea class="form-control form-control-sm" name="comment" id="comment"></textarea>
                             {% for message in get_flashed_messages(category_filter=["err_thoughts_comment"]) %}
                             <p class="alert">{{ message }}</p>
                             {% endfor %}
                         </div>
                         <div>
-                            <label for="related_article">Post Realated Article(s)</label>
-                            <textarea name="related_article" id="related_article"></textarea>
+                            <label for="related_article">Post Realated Article(s):</label>
+                            <textarea class="form-control form-control-sm" name="related_article" id="related_article"></textarea>
                             {% for message in get_flashed_messages(category_filter=["err_thoughts_related_article"]) %}
                             <p class="alert">{{ message }}</p>
                             {% endfor %}
                         </div>
                         <div>
-                            <label for="hypothesis">Hypothesis</label>
-                            <textarea name="hypothesis" id="hypothesis"></textarea>
+                            <label for="hypothesis">Hypothesis:</label>
+                            <textarea class="form-control form-control-sm" name="hypothesis" id="hypothesis"></textarea>
 
                             {% for message in get_flashed_messages(category_filter=["err_thoughts_hypothesis"]) %}
                             <p class="alert">{{ message }}</p>
                             {% endfor %}
                         </div>
                         <div>
-                            <label for="date">Date</label>
-                            <input type="date" id="date" name="date">
+                            <label for="date" >Date: </label>
+                            <input type="date" class="form-control form-control-sm" id="date" name="date">
                             {% for message in get_flashed_messages(category_filter=["err_thoughts_date"]) %}
                             <p class="alert">{{ message }}</p>
                             {% endfor %}
                         </div>
-                        <button>Add thought</button>
+                        <button class="btn my-2" style="background-color: #63ADF2; box-shadow: 4px 4px 0px 0px black;">Add thought</button>
                     </form>
-                    <table>
-                        <tr>
-                            <th>Year</th>
-                            <th>AVG Methane(ppm)</th>
-                        </tr>
-                        {% for dict in data['methane'] %}
-                        {% if dict['date'][5] == "1" and dict['date'][6] == undefined %}
-                        <tr>
-                            <td>{{ dict['date']}}</td>
-                            <td>{{ dict['average']}}</td>
-                        </tr>
-                        {%endif%}
-                        {%endfor%}
-                    </table>
+
                 </div>
-            </div>
+            
 </body>
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"

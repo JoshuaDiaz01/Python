@@ -93,8 +93,8 @@ class Thought:
     @staticmethod
     def validator(data:dict) -> bool:
         is_valid = True
-        if len(data['comment']) < 1:
-            flash("comment must be at least 3 characters.", "err_thoughts_comment")
+        if len(data['comment']) < 3:
+            flash("Year(s) Analyzed must be at least 3 characters.", "err_thoughts_comment")
             is_valid = False
 
         # #name didnt match time_played

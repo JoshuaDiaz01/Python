@@ -38,7 +38,7 @@
                         <a class="nav-link" href="/">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/thought/new">Post a Thought</a>
+                        <a class="nav-link" href="/thought/new">Post an Analysis</a>
                     </li>
                 </ul>
                 <!-- Left links -->
@@ -53,8 +53,9 @@
                 </a>
 
                 <!-- Notifications -->
-                <a href="/user/logout"><button type="button" class="btn btn-primary" data-toggle="button"
-                        aria-pressed="false" autocomplete="off">
+                <a href="/user/logout"><button type="button" class="btn"
+                        style="background-color: #63ADF2; height:40px; width:100px; box-shadow: 4px 4px 0px 0px black;"
+                        data-toggle="button" aria-pressed="false" autocomplete="off">
                         LogOut
                     </button></a>
             </div>
@@ -63,40 +64,20 @@
         <!-- Container wrapper -->
     </nav>
     <!-- Navbar -->
-    <div class="container">
-        <h1>Welcome {{user.first_name}}</h1>
-        <a href="/dashboard">Back to HomePage</a>
-        <a href="/user/logout">Logout</a>
-        <img src="{{ url_for('static', filename = 'image/ch4_trend_all_gl.png' )}}" class="img-fluid"
+
+    <h2 style="margin-left: 10px; color: #63ADF2; margin-top:10px;">
+        Add Your Analysis
+    </h2>
+    <div class="data">
+        <img id="monthly_mean" src="{{ url_for('static', filename = 'image/ch4_trend_all_gl.png' )}}" class="img-fluid"
             id="methane_chart">
-        <div>
-            <!-- player is defined in model_thought get one -->
-            <h3>Posted by: {{thought.player.first_name}} - {{thought.credential}}</h3>
-            <div>
-                <label for="comment">Year(s) Analyzed:</label>
-                <p>{{ thought.comment}}</p>
-            </div>
-            <div>
-                <label for="related_article">Related Articles:</label>
-                <p>{{thought.related_article}}</p>
-            </div>
-            <div>
-                <label for="hypothesis">Hypothesis:</label>
-                <p>{{thought.hypothesis}}</p>
-            </div>
-            <div>
-                <label for="date">Date Posted:</label>
-                <p>{{thought.date}}</p>
-            </div>
-        </div>
-        <table>
+        <table style="margin-left: 300px; justify-content: end" class="table table-hover">
             <tr>
                 <th>Year</th>
                 <th>AVG Methane(ppm)</th>
             </tr>
             {% for dict in data['methane'] %}
             {% if dict['date'][5] == "1" and dict['date'][6] == undefined %}
-
             <tr>
                 <td>{{ dict['date']}}</td>
                 <td>{{ dict['average']}}</td>
@@ -105,7 +86,44 @@
             {%endfor%}
         </table>
     </div>
+    <div>
+
+        <div>
+            <div style="margin-left:25px; color:#63ADF2" class="col-4">
+                <h2 style = "margin-left: 60px;">Posted by: {{thought.player.first_name}} - {{thought.credential}}</h2>
+                <ol class="list-group list-group-light ">
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                      <div class="ms-2 me-auto">
+                        <div class="fw-bold">Year(s) Analyzed:</div>
+                        {{ thought.comment}}
+                      </div>
+                      <span class="badge badge-primary rounded-pill"></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                      <div class="ms-2 me-auto">
+                        <div class="fw-bold">Related Articles:</div>
+                        {{thought.related_article}}
+                      </div>
+                      <span class="badge badge-primary rounded-pill"></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                      <div class="ms-2 me-auto">
+                        <div class="fw-bold">Hypothesis:</div>
+                        {{thought.hypothesis}}
+                      </div>
+                      <span class="badge badge-primary rounded-pill"></span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-start">
+                        <div class="ms-2 me-auto">
+                          <div class="fw-bold">Date Posted:</div>
+                          {{thought.date}}
+                        </div>
+                        <span class="badge badge-primary rounded-pill"></span>
+                      </li>
+                  </ol>
+
 </body>
+<!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
     crossorigin="anonymous"></script>
