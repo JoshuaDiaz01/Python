@@ -18,3 +18,8 @@
     height: 75px;
     width: 75px;
 }
+
+.images{
+    display: flex;
+    justify-content: space-evenly;
+}

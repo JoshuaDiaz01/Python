@@ -53,8 +53,8 @@
         </a>
 
         <!-- Notifications -->
-        <a href="/user/logout"><button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false"
-            autocomplete="off">
+        <a href="/user/logout"><button type="button" class="btn" style="background-color: #63ADF2;" data-toggle="button"
+            aria-pressed="false" autocomplete="off">
             LogOut
           </button></a>
       </div>
@@ -65,7 +65,9 @@
   <!-- Navbar -->
   <div>
 
-    <h1 class="text-center">{{user.first_name}} Welcome to Analysis of Methane In The Atmosphere</h1>
+    <h2 style="color: #63ADF2; margin-left: 10px; margin-top: 10px">{{user.first_name}}, Welcome to Analysis of Methane
+      Forum</h2>
+    <h1 class="text-center">All Posted Thoughts</h1>
     <table class="table table-hover my-2">
       <thead>
         <tr>
@@ -85,10 +87,10 @@
           <td>{{thought.comment}}</td>
           <td>
             <!-- not able to edit if user not in sesion -->
-            <a class="btn btn-primary" href="/thought/{{thought.id}}">View Thought</a>
+            <a class="btn" style="background-color: #63ADF2;" href="/thought/{{thought.id}}">View Thought</a>
             {% if thought.player.id == session['uuid'] %}
-            <a class="btn btn-primary" href="/thought/{{thought.id}}/edit">Edit</a>
-            <a class="btn btn-danger" href="/thought/{{thought.id}}/delete">Delete</a>
+            <a class="btn" style="background-color: #63ADF2;" href="/thought/{{thought.id}}/edit">Edit</a>
+            <a class="btn" style="background-color: #DB2955;" href="/thought/{{thought.id}}/delete">Delete</a>
             {% else %}
             {% endif %}
           </td>
@@ -98,18 +100,20 @@
       </tbody>
 
     </table>
-    <div>
+    <div class="images">
       <div>
-        <img src="{{ url_for('static', filename = 'image/ch4_trend_all_gl.png' )}}" class="img-fluid"
+        <img src="{{ url_for('static', filename = 'image/ch4_trend_all_gl.png' )}}" class="float-left"
           id="methane_chart">
-        <img src="{{ url_for('static', filename = 'image/global_gis_2021_chart.png' )}}" class="img-fluid"
+        <img src="{{ url_for('static', filename = 'image/global_gis_2021_chart.png' )}}" class="float-right"
           id="methane_chart">
       </div>
 
 
     </div>
-    <a href="/thought/new">+ Add New thought</a>
-    <a href="/user/logout">Logout</a>
+    <div>
+      <a href="/thought/new">+ Add New thought</a>
+      <a href="/user/logout">Logout</a>
+    </div>
   </div>
 </body>
 <!-- JavaScript Bundle with Popper -->
