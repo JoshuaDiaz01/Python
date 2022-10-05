@@ -73,7 +73,7 @@
             <table style = "margin-left: 300px; justify-content: end" class="table table-hover">
                 <tr>
                     <th>Year</th>
-                    <th>AVG Methane(ppm)</th>
+                    <th>AVG Atmospheric Methane(ppm)</th>
                 </tr>
                 {% for dict in data['methane'] %}
                 {% if dict['date'][5] == "1" and dict['date'][6] == undefined %}
@@ -149,7 +149,7 @@
                             <p class="alert">{{ message }}</p>
                             {% endfor %}
                         </div>
-                        <button class="btn my-2" style="background-color: #63ADF2; box-shadow: 4px 4px 0px 0px black;">Add thought</button>
+                        <button class="btn my-2" style="background-color: #63ADF2; box-shadow: 4px 4px 0px 0px black;">Add Analysis</button>
                     </form>
 
                 </div>

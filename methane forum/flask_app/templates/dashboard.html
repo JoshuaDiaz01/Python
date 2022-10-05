@@ -38,7 +38,7 @@
             <a class="nav-link" href="/">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/thought/new">Post a Thought</a>
+            <a class="nav-link" href="/thought/new">Post an Analysis</a>
           </li>
         </ul>
         <!-- Left links -->
@@ -86,7 +86,7 @@
           <td>{{thought.comment}}</td>
           <td>
             <!-- not able to edit if user not in sesion -->
-            <a id="allbuttons" class="btn mx-1" style="background-color: #63ADF2;" href="/thought/{{thought.id}}">View Thought</a>
+            <a id="allbuttons" class="btn mx-1" style="background-color: #63ADF2;" href="/thought/{{thought.id}}">View Analysis</a>
             {% if thought.player.id == session['uuid'] %}
             <a id="allbuttons" class="btn" style="background-color: #63ADF2;" href="/thought/{{thought.id}}/edit">Edit</a>
             <a id="allbuttons" class="btn mx-1" style="background-color: #DB2955;" href="/thought/{{thought.id}}/delete">Delete</a>
@@ -110,7 +110,7 @@
 
     </div>
     <div class="bottom">
-      <a class="btn" style="background-color: #63ADF2;" href="/thought/new" id="add">+ Add New thought</a>
+      <a class="btn" style="background-color: #63ADF2;" href="/thought/new" id="add">+ Add New Analysis</a>
     </div>
   </div>
 </body>

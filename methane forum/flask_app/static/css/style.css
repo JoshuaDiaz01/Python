@@ -50,22 +50,3 @@
     width:800px;
 }
 
-/* <!-- player is defined in model_thought get one -->
-            <h3>Posted by: {{thought.player.first_name}} - {{thought.credential}}</h3>
-            <div>
-                <label for="comment">Year(s) Analyzed:</label>
-                <p>{{ thought.comment}}</p>
-            </div>
-            <div>
-                <label for="related_article">Related Articles:</label>
-                <p>{{thought.related_article}}</p>
-            </div>
-            <div>
-                <label for="hypothesis">Hypothesis:</label>
-                <p>{{thought.hypothesis}}</p>
-            </div>
-            <div>
-                <label for="date">Date Posted:</label>
-                <p>{{thought.date}}</p>
-            </div>
-        </div> */
